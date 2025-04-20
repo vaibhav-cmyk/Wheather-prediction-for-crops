@@ -1,0 +1,200 @@
+/* === ROOT THEME VARIABLES === */
+:root {
+  --primary: #007bff;
+  --primary-hover: #0056b3;
+  --success: #28a745;
+  --success-hover: #218838;
+
+  /* Light Theme Defaults */
+  --bg: linear-gradient(to right, #8360c3, #2ebf91);
+  --text-color: #333;
+  --white: #ffffff;
+  --light-bg: #f8f9fa;
+  --grey-bg: #e9ecef;
+  --footer-bg: #f4f4f4;
+  --input-border: #ccc;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === DARK MODE OVERRIDES === */
+[data-theme="dark"] {
+  --bg: linear-gradient(to right, #232526, #414345);
+  --text-color: #f1f1f1;
+  --white: #1e1e1e;
+  --light-bg: #2b2b2b;
+  --grey-bg: #333;
+  --footer-bg: #1f1f1f;
+  --input-border: #555;
+  --card-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* === RESET & GLOBAL === */
+:where(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: var(--bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  animation: fadeIn 0.8s ease;
+  transition: background 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* === HEADINGS & TEXT === */
+h1, h2, h3, h6 {
+  margin-bottom: 10px;
+}
+
+/* === USER EMAIL === */
+.user-email {
+  font-size: 1.1em;
+  margin-bottom: 1.25rem;
+}
+
+/* === WEATHER INPUT === */
+.weather-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.city-input {
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-size: 1em;
+  background: var(--white);
+  color: var(--text-color);
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.city-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* === BUTTONS === */
+.search-btn, .location-btn, .next-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn, .location-btn {
+  background-color: var(--primary);
+}
+
+.search-btn:hover, .location-btn:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.03);
+}
+
+.next-btn {
+  background-color: var(--success);
+  display: inline-block;
+  text-decoration: none;
+}
+
+.next-btn:hover {
+  background-color: var(--success-hover);
+  transform: scale(1.03);
+}
+
+/* === WEATHER DATA === */
+.weather-data {
+  display: none;
+}
+
+.current-weather {
+  margin-bottom: 20px;
+}
+
+.details {
+  background: var(--grey-bg);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* === FORECAST CARDS === */
+.days-forecast {
+  margin-top: 20px;
+}
+
+.weather-cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.weather-cards .card {
+  background: var(--light-bg);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.weather-cards .card:hover {
+  transform: translateY(-5px);
+}
+
+/* === RECOMMENDATIONS === */
+.recommendation-section {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--grey-bg);
+  border-radius: 8px;
+}
+
+/* === FOOTER === */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--footer-bg);
+  text-align: center;
+  border-top: 1px solid #ddd;
+  transition: background 0.3s ease;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .weather-input {
+    flex-direction: column;
+  }
+
+  .search-btn, .location-btn {
+    width: 100%;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
